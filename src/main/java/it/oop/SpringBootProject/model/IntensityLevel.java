@@ -20,24 +20,25 @@ public class IntensityLevel {
 	private String symbol;
 	
 	
-	public IntensityLevel(IntensityLevel lv) {
-		if(lv != null) {
-			value = lv.getValue();
-			symbol = lv.getSymbol();
-		}
-		
-		else {
-			value = null;
-			symbol = null;
-		}
-	}
-	
 	public IntensityLevel(Number value, String symbol) {
 		this.value = value;
 		this.symbol = symbol;
 	}
 	
 	public IntensityLevel(String intensityString) throws InvalidIntensityFormatException {
+		setIntensity(intensityString);
+	}
+	
+	public IntensityLevel(String intensityString, String regex) throws InvalidIntensityFormatException {
+		Matcher m = Pattern.compile(regex).matcher(intensityString);
+		if(m.find()) {
+			String str = m.group();
+			setIntensity(str);
+		}
+	}
+	
+	
+	public void setIntensity(String intensityString) throws InvalidIntensityFormatException {
 		Matcher m1 = Pattern.compile("[0-9]+?[a-zA-Z]").matcher(intensityString), 
 				m2 = Pattern.compile("[a-zA-Z]+?[0-9]+").matcher(intensityString);
 		String realString = "";

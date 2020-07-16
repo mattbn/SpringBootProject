@@ -3,7 +3,7 @@
  */
 package it.oop.SpringBootProject.model;
 
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  * @author Mattia
@@ -29,7 +29,7 @@ public class GeomagConditionsEvent extends SolarEvent {
 		super(event);
 	}
 	
-	public GeomagConditionsEvent(IntensityLevel intensity, Date date) {
+	public GeomagConditionsEvent(IntensityLevel intensity, Calendar date) {
 		super(intensity, date);
 	}
 

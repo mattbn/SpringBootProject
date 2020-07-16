@@ -3,7 +3,7 @@
  */
 package it.oop.SpringBootProject.model;
 
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  * @author Mattia
@@ -12,7 +12,7 @@ import java.util.Date;
 public abstract class SolarEvent {
 	
 	private IntensityLevel intensity;
-	private Date date; // data di osservazione
+	private Calendar date; // data di osservazione
 	
 	
 	public abstract EventType getType();
@@ -21,20 +21,23 @@ public abstract class SolarEvent {
 	
 	
 	public SolarEvent() {
-		intensity = null;
-		date = null;
+		intensity = new IntensityLevel(0, "");
+		date = Calendar.getInstance();
 	}
 	
 	public SolarEvent(SolarEvent event) {
-		intensity = new IntensityLevel(event == null ? null : event.getIntensity());
-		
-		if(event != null)
+		if(event != null) {
+			intensity = event.getIntensity();
 			date = event.getDate();
-		else 
-			date = new Date();
+		}
+		
+		else {
+			intensity = new IntensityLevel(0, "");
+			date = Calendar.getInstance();
+		}
 	}
 	
-	public SolarEvent(IntensityLevel intensity, Date date) {
+	public SolarEvent(IntensityLevel intensity, Calendar date) {
 		this.intensity = intensity;
 		this.date = date;
 	}
@@ -50,12 +53,12 @@ public abstract class SolarEvent {
 	}
 
 
-	public Date getDate() {
+	public Calendar getDate() {
 		return date;
 	}
 
 
-	public void setDate(Date date) {
+	public void setDate(Calendar date) {
 		this.date = date;
 	}
 	
