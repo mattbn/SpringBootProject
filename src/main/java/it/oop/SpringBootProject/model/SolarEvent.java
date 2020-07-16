@@ -20,16 +20,18 @@ public abstract class SolarEvent {
 	public abstract String getIntensityRegex();
 	
 	
+	public SolarEvent() {
+		intensity = null;
+		date = null;
+	}
+	
 	public SolarEvent(SolarEvent event) {
-		if(event != null) {
-			intensity = event.getIntensity();
-			date = event.getDate();
-		}
+		intensity = new IntensityLevel(event == null ? null : event.getIntensity());
 		
-		else {
-			intensity = null;
-			date = null;
-		}
+		if(event != null)
+			date = event.getDate();
+		else 
+			date = new Date();
 	}
 	
 	public SolarEvent(IntensityLevel intensity, Date date) {

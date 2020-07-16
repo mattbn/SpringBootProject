@@ -22,6 +22,9 @@ public class FlareEvent extends SolarEvent {
 		return "[A-Z]([0-9]*[.])?[0-9]+";
 	}
 	
+	public FlareEvent() {
+		super();
+	}
 	
 	public FlareEvent(FlareEvent event) {
 		super(event);

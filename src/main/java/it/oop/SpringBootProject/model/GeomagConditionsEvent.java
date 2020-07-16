@@ -21,6 +21,10 @@ public class GeomagConditionsEvent extends SolarEvent {
 		return "Kp[0-9]";
 	}
 	
+	public GeomagConditionsEvent() {
+		super();
+	}
+	
 	public GeomagConditionsEvent(GeomagConditionsEvent event) {
 		super(event);
 	}
