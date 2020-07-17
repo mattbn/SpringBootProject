@@ -8,7 +8,11 @@ I dati sono ottenuti dai tweet dell'utente Twitter @\_SpaceWeather\_.
 
 ### Installazione
 
-NYI
+1. Clonare questa repository con `git clone https://github.com/mattbn/SpringBootProject` oppure con il pulsante "Code" -> "Download ZIP"
+2. Aprire il Prompt dei Comandi (Windows, cmd.exe) oppure il Terminale (\*NIX) nella cartella creata
+3. Inserire il comando `mvn clean install`
+4. Eseguire il server con `java -jar target/SpringBootProject-0.0.1-SNAPSHOT.jar`
+
 
 ### Utilizzo
 **Essendo per ora sprovvisto di interfaccia utente grafica (GUI o viste), l'unico modo per effettuare le richieste correttamente è utilizzare un software di terze parti (Postman, ad esempio).**
@@ -65,11 +69,11 @@ NYI
 1. interval (String) : intervallo di tempo nel quale calcolare la statistica (possibili valori: "month", "year")
 
 ### Esempio di chiamata
-POST /stat/count/flare?interval="year"
-POST /stat/intensity/geomagnetic_storm?interval="month"
-GET /rawdata?screen_name=\_SpaceWeather\_&count=71
-GET /metadata
-GET /data?screen_name=\_SpaceWeather\_&count=42
+> POST /stat/count/flare?interval="year"
+> POST /stat/intensity/geomagnetic_storm?interval="month"
+> GET /rawdata?screen_name=\_SpaceWeather\_&count=71
+> GET /metadata
+> GET /data?screen_name=\_SpaceWeather\_&count=42
 
 ### Diagrammi UML
 
