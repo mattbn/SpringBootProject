@@ -11,22 +11,23 @@ import java.util.Calendar;
  */
 public class Stat {
 	
-	protected Date date;
-	
+	//protected Date date;
+	protected Calendar date;
 	
 	public Stat() {
-		date = new Date(Calendar.getInstance());
+		//date = new Date(Calendar.getInstance());
+		date = Calendar.getInstance();
 	}
 	
-	public Stat(Date date) {
+	public Stat(Calendar date) {
 		this.date = date;
 	}
 	
-	public Date getDate() {
+	public Calendar getDate() {
 		return date;
 	}
 	
-	public void setDate(Date date) {
+	public void setDate(Calendar date) {
 		this.date = date;
 	}
 

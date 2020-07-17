@@ -3,6 +3,8 @@
  */
 package it.oop.SpringBootProject.model;
 
+import java.util.Calendar;
+
 /**
  * @author Mattia
  *
@@ -19,7 +21,7 @@ public class IntensityStat extends Stat {
 		super();
 	}
 	
-	public IntensityStat(Date date, int count, SolarEvent min, SolarEvent max, float average) {
+	public IntensityStat(Calendar date, int count, SolarEvent min, SolarEvent max, float average) {
 		super(date);
 		
 		this.count = count;

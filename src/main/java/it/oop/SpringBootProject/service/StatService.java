@@ -6,14 +6,11 @@ package it.oop.SpringBootProject.service;
 import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
-import it.oop.SpringBootProject.model.Date;
 import it.oop.SpringBootProject.model.EventType;
 import it.oop.SpringBootProject.model.SolarEvent;
 import it.oop.SpringBootProject.util.CountStatCalc;
 import it.oop.SpringBootProject.util.IntensityStatCalc;
-import it.oop.SpringBootProject.util.Pair;
 
 /**
  * @author Mattia
@@ -36,8 +33,9 @@ public class StatService {
 			return null;
 		
 		List<SolarEvent> nameCompliantEvents = new LinkedList<>();
-		for(SolarEvent ev : events) 
-			if(ev != null && ev.getType() == eventType)
+		
+		for(SolarEvent ev : events)
+			if(ev != null && (name.equals("any") || ev.getType() == eventType))
 				nameCompliantEvents.add(ev);
 		
 		while(!nameCompliantEvents.isEmpty()) {
@@ -60,7 +58,6 @@ public class StatService {
 			res.add(filteredEvents);
 		}
 		
-		System.out.println("output");
 		return res;
 	}
 
@@ -101,7 +98,6 @@ public class StatService {
 			res.add(filteredEvents);
 		}
 		
-		System.out.println("output");
 		return res;
 	}
 	

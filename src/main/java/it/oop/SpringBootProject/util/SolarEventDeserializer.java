@@ -3,8 +3,6 @@
  */
 package it.oop.SpringBootProject.util;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Calendar;
@@ -55,6 +53,7 @@ public class SolarEventDeserializer extends StdDeserializer<SolarEvent> {
 				if(typeNode != null && e.getKey().equals(typeNode.asText())) {
 					IntensityLevel il = om.treeToValue(node.get("intensity"), IntensityLevel.class);
 					Calendar c = om.treeToValue(node.get("date"), Calendar.class);
+					c.add(Calendar.YEAR, 1900); // setta la data nel formato desiderato
 					return e.getValue().getClass().getDeclaredConstructor(IntensityLevel.class, 
 							Calendar.class).newInstance(il, c);
 				}

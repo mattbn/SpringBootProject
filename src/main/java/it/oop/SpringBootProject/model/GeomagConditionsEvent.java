@@ -27,16 +27,19 @@ public class GeomagConditionsEvent extends SolarEvent {
 	public GeomagConditionsEvent() {
 		super();
 		type = EventType.GeomagneticConditions;
+		intensityClass = GeomagneticIntensityLevel.class;
 	}
 	
 	public GeomagConditionsEvent(GeomagConditionsEvent event) {
 		super(event);
 		type = EventType.GeomagneticConditions;
+		intensityClass = GeomagneticIntensityLevel.class;
 	}
 	
 	public GeomagConditionsEvent(IntensityLevel intensity, Calendar date) {
 		super(intensity, date);
 		type = EventType.GeomagneticConditions;
+		intensityClass = GeomagneticIntensityLevel.class;
 	}
 
 }

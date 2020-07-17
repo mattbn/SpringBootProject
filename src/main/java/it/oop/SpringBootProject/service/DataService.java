@@ -12,8 +12,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -27,7 +25,6 @@ import it.oop.SpringBootProject.model.GeomagStormEvent;
 import it.oop.SpringBootProject.model.IntensityLevel;
 import it.oop.SpringBootProject.model.SolarEvent;
 import it.oop.SpringBootProject.model.twitter.Tweet;
-import it.oop.SpringBootProject.util.InvalidIntensityFormatException;
 
 /**
  * @author Mattia
@@ -35,29 +32,40 @@ import it.oop.SpringBootProject.util.InvalidIntensityFormatException;
  */
 public class DataService {
 	
-	public static final Map<String,SolarEvent> VALUE_INSTANCES = Map.of(
-			"flare", new FlareEvent(), 
-			"Flare", new FlareEvent(), 
-			"geomagnetic conditions", new GeomagConditionsEvent(), 
-			"Geomagnetic conditions", new GeomagConditionsEvent(), 
-			"GeomagneticConditions", new GeomagConditionsEvent(), 
-			"geomagnetic storm", new GeomagStormEvent(), 
-			"Geomagnetic storm", new GeomagStormEvent(), 
-			"GeomagneticStorm", new GeomagStormEvent());
+	private static final SolarEvent[] EVENT_INSTANCES = {
+			new FlareEvent(), 
+			new GeomagConditionsEvent(), 
+			new GeomagStormEvent()
+	};
 	
-	@SuppressWarnings("deprecation")
+	public static final Map<String,SolarEvent> VALUE_INSTANCES = Map.ofEntries(
+			Map.entry("flare", EVENT_INSTANCES[0]), 
+			Map.entry("Flare", EVENT_INSTANCES[0]), 
+			
+			Map.entry("geomagnetic conditions", EVENT_INSTANCES[1]), 
+			Map.entry("Geomagnetic conditions", EVENT_INSTANCES[1]), 
+			Map.entry("geomagnetic_conditions", EVENT_INSTANCES[1]), 
+			Map.entry("GeomagneticConditions", EVENT_INSTANCES[1]), 
+			Map.entry("gconditions", EVENT_INSTANCES[1]), 
+			
+			Map.entry("geomagnetic storm", EVENT_INSTANCES[2]), 
+			Map.entry("Geomagnetic storm", EVENT_INSTANCES[2]),  
+			Map.entry("GeomagneticStorm", EVENT_INSTANCES[2]), 
+			Map.entry("geomagnetic_storm", EVENT_INSTANCES[2]), 
+			Map.entry("gstorm", EVENT_INSTANCES[2]));
+	
 	public static SolarEvent convert(Tweet tweet) {
 		
 		if(tweet != null)
 			for(Map.Entry<String,SolarEvent> e : VALUE_INSTANCES.entrySet())
 				if(tweet.getText().contains(e.getKey())) {
+					
 					// ottiene data di osservazione
 					// la data corrisponde alla data di pubblicazione
 					// l'orario e' nel testo del tweet
 					Calendar obs = tweet.getCreationDate();
 					Matcher m = Pattern.compile("[0-9][0-9]:[0-9][0-9] UTC").matcher(tweet.getText());
 					if(m.find()) {
-						System.out.println("observation date match");
 						String dateStr = m.group();
 						obs.set(Calendar.HOUR_OF_DAY, Integer.parseInt(dateStr.substring(0,2)));
 						obs.set(Calendar.MINUTE, Integer.parseInt(dateStr.substring(3,5)));
@@ -67,9 +75,14 @@ public class DataService {
 					// ottiene intensita' dalla stringa
 					IntensityLevel il = null;
 					try {
-						il = new IntensityLevel(tweet.getText(), e.getValue().getIntensityRegex());
-					} catch (InvalidIntensityFormatException e2) {
-						e2.printStackTrace();
+						il = e.getValue().intensityClass.getDeclaredConstructor(String.class, String.class)
+								.newInstance(tweet.getText(), e.getValue().getIntensityRegex());
+					} catch (InstantiationException | 
+							IllegalAccessException | IllegalArgumentException | 
+							InvocationTargetException | NoSuchMethodException | 
+							SecurityException e2) {
+						System.err.println(e2.getClass().getCanonicalName()+": invalid event text");
+						return null;
 					}
 					
 					// crea una nuova istanza della classe

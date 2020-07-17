@@ -26,7 +26,7 @@ public class DataController {
 	private static final String fqdn = "https://wd4hfxnxxa.execute-api.us-east-2.amazonaws.com/dev/user/1.1/statuses/user_timeline.json";
 	
 	@RequestMapping("/rawdata")
-	public String getRawData(
+	public List<Tweet> getRawData(
 			@RequestParam(name = "screen_name", defaultValue = "_SpaceWeather_", required = false) String name, 
 			@RequestParam(name = "count", defaultValue = "50", required = false) Integer count, 
 			HttpServletRequest req) {
@@ -36,7 +36,8 @@ public class DataController {
 		System.out.println("\tscreen_name = "+name);
 		System.out.println("\tcount = "+count.toString());
 		
-		return DataService.getRemoteData(fqdn+"?screen_name="+name+"&count="+count.toString());
+		//return DataService.getRemoteData(fqdn+"?screen_name="+name+"&count="+count.toString());
+		return DataService.getTweets(fqdn+"?screen_name="+name+"&count="+count.toString());
 	}
 	
 	@RequestMapping("/data")

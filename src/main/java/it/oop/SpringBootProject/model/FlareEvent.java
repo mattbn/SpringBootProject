@@ -11,7 +11,7 @@ import java.util.Calendar;
  */
 public class FlareEvent extends SolarEvent {
 	
-	private final String intensityRegex = "[A-Z]([0-9]*[.])?[0-9]+";
+	private final String intensityRegex = "([A-C]|M|X)([0-9]+[.][0-9]+)";
 	
 
 	@Override
@@ -28,16 +28,19 @@ public class FlareEvent extends SolarEvent {
 	public FlareEvent() {
 		super();
 		type = EventType.Flare;
+		intensityClass = FlareIntensityLevel.class;
 	}
 	
 	public FlareEvent(FlareEvent event) {
 		super(event);
 		type = EventType.Flare;
+		intensityClass = FlareIntensityLevel.class;
 	}
 	
 	public FlareEvent(IntensityLevel intensity, Calendar date) {
 		super(intensity, date);
 		type = EventType.Flare;
+		intensityClass = FlareIntensityLevel.class;
 	}
 
 }

@@ -22,15 +22,14 @@ public abstract class BaseStatCalc implements StatCalc {
 		name = "";
 		type = "";
 		interval = "";
-		data = new Stat();
+		data = null;
 	}
 	
 	public BaseStatCalc(String name, String type, String interval, Object data, Class<?> cls) {
 		this.name = name;
 		this.type = type;
 		this.interval = interval;
-		
-		data = calc(data, cls);
+		data = null;
 	}
 
 	public String getName() {

@@ -4,14 +4,12 @@
 package it.oop.SpringBootProject.model.twitter;
 
 import java.util.Calendar;
-import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import it.oop.SpringBootProject.util.CalendarDeserializer;
-import it.oop.SpringBootProject.util.DateDeserializer;
 
 /**
  * @author Mattia

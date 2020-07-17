@@ -3,6 +3,8 @@
  */
 package it.oop.SpringBootProject.model;
 
+import java.util.Calendar;
+
 /**
  * @author Mattia
  *
@@ -17,7 +19,7 @@ public class CountStat extends Stat {
 		count = 0;
 	}
 	
-	public CountStat(Date date, int count) {
+	public CountStat(Calendar date, int count) {
 		super(date);
 		this.count = count;
 	}

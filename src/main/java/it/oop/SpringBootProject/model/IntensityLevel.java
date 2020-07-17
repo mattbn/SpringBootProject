@@ -4,8 +4,6 @@
 package it.oop.SpringBootProject.model;
 
 import java.math.BigDecimal;
-import java.text.NumberFormat;
-import java.text.ParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,87 +15,38 @@ import it.oop.SpringBootProject.util.InvalidIntensityFormatException;
  */
 public class IntensityLevel {
 	
-	private Number value;
-	private String symbol;
+	protected Number value;
 	
-	private static final Pattern 	unitAndValue = Pattern.compile("[a-zA-Z]+?([0-9]+[.])?[0-9]+"), 
-									valueAndUnit = Pattern.compile("([0-9]+[.])?[0-9]+?[a-zA-Z]"), 
-									onlyValue = Pattern.compile("([0-9]+[.])?[0-9]+"), 
-									onlySymbol = Pattern.compile("[a-zA-Z]+");
+	
+	public String getIntensityString() {
+		return (value == null ? "" : value.toString());
+	}
 	
 	
 	public IntensityLevel() {
-		value = Integer.valueOf(0);
-		symbol = "";
+		value = null;
 	}
 	
-	public IntensityLevel(Number value, String symbol) {
+	public IntensityLevel(Number value) {
 		this.value = value;
-		this.symbol = symbol;
 	}
 	
-	public IntensityLevel(String intensityString) throws InvalidIntensityFormatException {
-		Matcher[] m = { 
-				unitAndValue.matcher(intensityString), 
-				valueAndUnit.matcher(intensityString)
-		};
+	public IntensityLevel(String intensityString, String regexString) throws InvalidIntensityFormatException {
+		Matcher m = Pattern.compile(regexString).matcher(intensityString);
 		
-		for(int i = 0; i < m.length; ++i) {
-			if(m[i].find()) {
-				String str = m[i].group();
-				Matcher[] m2 = {
-						onlyValue.matcher(str), 
-						onlySymbol.matcher(str)
-				};
-				
-				if(m2[0].find())
-					try {
-						value = NumberFormat.getInstance().parse(m2[0].group());
-					} catch (ParseException e) {
-						value = null;
-						e.printStackTrace();
-					}
-				
-				if(m2[1].find()) 
-					symbol = m2[1].group();
-				
-			}
-		}
-	}
-	
-	public IntensityLevel(String intensityString, String regex) throws InvalidIntensityFormatException {
-		// reset string pos at every check
-		
-		Matcher m = Pattern.compile(regex).matcher(intensityString);
 		if(m.find()) {
-			String str = m.group();
+			String content = m.group();
+			System.out.println(getClass().getName()+":"+content);
 			
-			Matcher[] m1 = { unitAndValue.matcher(intensityString), 
-							valueAndUnit.matcher(intensityString)
-			};
-			
-			for(int i = 0; i < m1.length; ++i) {
-				if(m1[i].find()) {str = m1[i].group();
-					Matcher[] m2 = {
-							onlyValue.matcher(str), 
-							onlySymbol.matcher(str)
-					};
-					
-					if(m2[0].find())
-						try {
-							value = NumberFormat.getInstance().parse(m2[0].group());
-						} catch (ParseException e) {
-							value = null;
-							e.printStackTrace();
-						}
-					
-					if(m2[1].find()) 
-						symbol = m2[1].group();
-					
-				}
-			}
+			m = Pattern.compile("([0-9]+[.])?[0-9]+").matcher(content);
+			if(m.find())
+				value = Integer.parseInt(m.group());
 		}
+		
+		else 
+			throw new InvalidIntensityFormatException(getClass().getName()+":Formato intensita' non riconosciuto");
 	}
+	
 
 	public Number getValue() {
 		return value;
@@ -106,25 +55,17 @@ public class IntensityLevel {
 	public void setValue(Number value) {
 		this.value = value;
 	}
-
-	public String getSymbol() {
-		return symbol;
-	}
-
-	public void setSymbol(String symbol) {
-		this.symbol = symbol;
-	}
 	
-	public boolean equals(IntensityLevel il) {
-		if(il == null)
-			return false;
-		return (symbol.equals(il.getSymbol()) && value.equals(il.getValue()));
+	@Override
+	public String toString() {
+		return getIntensityString();
 	}
 	
 	public int compareTo(IntensityLevel il) {
-		if(il == null || !symbol.equals(il.getSymbol()))
-			return 2;
-		return (new BigDecimal(value.toString()).compareTo(new BigDecimal(il.getValue().toString())));
+		if(il != null)
+			return new BigDecimal(value.toString()).compareTo(new BigDecimal(il.getValue().toString()));
+		
+		return 0;
 	}
-
+	
 }
