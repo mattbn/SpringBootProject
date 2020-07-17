@@ -75,17 +75,30 @@ GET /data?screen_name=\_SpaceWeather\_&count=42
 
 ##### Use Case Diagram
 
+![](https://raw.githubusercontent.com/mattbn/SpringBootProject/master/usecase.png)
+
 ##### Class Diagram
 
-##### Sequence Diagram
+![](https://raw.githubusercontent.com/mattbn/SpringBootProject/master/clsdiag.png)
 
+##### Sequence Diagram
 ###### Richiesta GET /rawdata
+
+![](https://raw.githubusercontent.com/mattbn/SpringBootProject/master/rawdata.png)
 
 ###### Richiesta GET /data
 
+![](https://raw.githubusercontent.com/mattbn/SpringBootProject/master/data.png)
+
 ###### Richiesta GET /metadata
+
+![](https://raw.githubusercontent.com/mattbn/SpringBootProject/master/metadata.png)
 
 ###### Richiesta POST /stat/intensity/{event}
 
+![](https://raw.githubusercontent.com/mattbn/SpringBootProject/master/statsintensity.png)
+
 ###### Richiesta POST /stat/count/{event}
+
+![](https://raw.githubusercontent.com/mattbn/SpringBootProject/master/statscount.png)
 
