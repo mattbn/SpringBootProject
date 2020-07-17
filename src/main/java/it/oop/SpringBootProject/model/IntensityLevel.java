@@ -7,6 +7,8 @@ import java.math.BigDecimal;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import it.oop.SpringBootProject.util.InvalidIntensityFormatException;
 
 /**
@@ -18,6 +20,9 @@ import it.oop.SpringBootProject.util.InvalidIntensityFormatException;
 public class IntensityLevel {
 	
 	protected Number value;
+	
+	@JsonIgnore
+	protected String symbol;
 	
 	/**
 	 * 
@@ -90,7 +95,7 @@ public class IntensityLevel {
 	/**
 	 * 
 	 * @param il Oggetto IntensityLevel su cui effettuare il confronto
-	 * @return -1 se il.getValue() > this.getValue(), 0 se i valori sono uguali, 1 altrimenti
+	 * @return -1 se il.getValue() e' maggiore di this.getValue(), 0 se i valori sono uguali, 1 altrimenti
 	 */
 	public int compareTo(IntensityLevel il) {
 		if(il != null)

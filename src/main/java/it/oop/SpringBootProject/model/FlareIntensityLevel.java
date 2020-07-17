@@ -58,8 +58,10 @@ public class FlareIntensityLevel extends IntensityLevel {
 			BigDecimal k = BigDecimal.ZERO;
 			// prende l'unita' di misura e fa le relative conversioni
 			for(Map.Entry<Character,BigDecimal> e : symbols.entrySet())
-				if(content.charAt(0) == e.getKey())
+				if(content.charAt(0) == e.getKey()) {
 					k = e.getValue(); // == 10^(-x)
+					symbol = e.getKey().toString();
+				}
 			
 			String strVal = m.group();
 			// value = 10^(-x) * moltiplicatore
@@ -84,13 +86,8 @@ public class FlareIntensityLevel extends IntensityLevel {
 					k = BigDecimal.ONE;
 		
 		// prende l'unita' di misura giusta
-		for(Map.Entry<Character,BigDecimal> e : symbols.entrySet())
-			if(v.compareTo(e.getValue()) > 0) {
-				res = e.getKey().toString();
-				k = BigDecimal.ONE.divide(e.getValue());
-			}
-		
-		res += v.multiply(k).toString();
+		k = BigDecimal.ONE.divide(symbols.get(symbol.charAt(0)));
+		res = symbol+v.multiply(k).toString();
 		
 		return res;
 	}

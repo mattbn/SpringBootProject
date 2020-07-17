@@ -72,6 +72,7 @@ public class DataService {
 					// la data corrisponde alla data di pubblicazione
 					// l'orario e' nel testo del tweet
 					Calendar obs = tweet.getCreationDate();
+					obs.add(Calendar.YEAR, 1900);
 					Matcher m = Pattern.compile("[0-9][0-9]:[0-9][0-9] UTC").matcher(tweet.getText());
 					if(m.find()) {
 						String dateStr = m.group();

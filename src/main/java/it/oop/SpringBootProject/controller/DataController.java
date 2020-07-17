@@ -17,9 +17,9 @@ import it.oop.SpringBootProject.service.DataService;
 import it.oop.SpringBootProject.service.JsonParserService;
 
 /**
- * Gestisce le richieste sulle rotte relative ai dati<br />
- * <i>/data<br />
- * /metadata<br />
+ * Gestisce le richieste sulle rotte relative ai dati<br>
+ * <i>/data<br>
+ * /metadata<br>
  * /rawdata</i>
  * 
  * @author <a href="https://github.com/mattbn">Mattia Bonanese</a>
