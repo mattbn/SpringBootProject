@@ -70,9 +70,13 @@ I dati sono ottenuti dai tweet dell'utente Twitter @\_SpaceWeather\_.
 
 ### Esempio di chiamata
 > POST /stat/count/flare?interval="year"
+
 > POST /stat/intensity/geomagnetic_storm?interval="month"
+
 > GET /rawdata?screen_name=\_SpaceWeather\_&count=71
+
 > GET /metadata
+
 > GET /data?screen_name=\_SpaceWeather\_&count=42
 
 ### Diagrammi UML
