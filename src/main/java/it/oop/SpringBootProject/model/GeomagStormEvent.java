@@ -5,8 +5,6 @@ package it.oop.SpringBootProject.model;
 
 import java.util.Calendar;
 
-import it.oop.SpringBootProject.model.SolarEvent;
-
 /**
  * @author Mattia
  *

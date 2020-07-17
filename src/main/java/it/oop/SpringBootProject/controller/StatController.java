@@ -51,7 +51,7 @@ public class StatController {
 	}
 	
 	@PostMapping("/stat/intensity/{event}")
-	public List<IntensityStatCalc> getIntensityStat(@RequestBody List<SolarEvent> eventList, 
+	public List<IntensityStatCalc> getIntensityStats(@RequestBody List<SolarEvent> eventList, 
 			@PathVariable(name = "event") String eventName, 
 			@RequestParam(name = "interval", defaultValue = "month", required = false) String interval, 
 			HttpServletRequest req) {
