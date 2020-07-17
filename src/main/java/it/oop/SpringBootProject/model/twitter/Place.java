@@ -7,7 +7,9 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * @author Mattia
+ * Rappresenta un oggetto di tipo Places di Twitter
+ * 
+ * @author <a href="https://github.com/mattbn">Mattia Bonanese</a>
  *
  */
 @JsonIgnoreProperties(value = {"bounding_box", "attributes"})
@@ -26,6 +28,9 @@ public class Place {
 	// nessuna bounding box per ora
 	
 	
+	/**
+	 * Costruttore di base
+	 */
 	public Place() {
 		id = "";
 		url = "";
@@ -37,13 +42,13 @@ public class Place {
 	}
 	
 	/**
-	 * @param id
-	 * @param url
-	 * @param placeType
-	 * @param name
-	 * @param fullName
-	 * @param countryCode
-	 * @param country
+	 * @param id Id del luogo
+	 * @param url Url del luogo
+	 * @param placeType Tipo di luogo
+	 * @param name Nome del luogo 
+	 * @param fullName Nome completo del luogo
+	 * @param countryCode Country code del luogo
+	 * @param country Nome del paese
 	 */
 	public Place(String id, String url, String placeType, String name, String fullName, String countryCode,
 			String country) {
@@ -57,58 +62,114 @@ public class Place {
 	}
 	
 	
+	/**
+	 * 
+	 * @return L'id attuale
+	 */
 	public String getId() {
 		return id;
 	}
 	
+	/**
+	 * 
+	 * @param id Il nuovo id
+	 */
 	public void setId(String id) {
 		this.id = id;
 	}
 	
+	/**
+	 * 
+	 * @return L'Url attuale
+	 */
 	public String getUrl() {
 		return url;
 	}
 	
+	/**
+	 * 
+	 * @param url Il nuovo Url
+	 */
 	public void setUrl(String url) {
 		this.url = url;
 	}
 	
+	/**
+	 * 
+	 * @return Il tipo attuale
+	 */
 	public String getPlaceType() {
 		return placeType;
 	}
 	
+	/**
+	 * 
+	 * @param placeType Il nuovo tipo
+	 */
 	public void setPlaceType(String placeType) {
 		this.placeType = placeType;
 	}
 	
+	/**
+	 * 
+	 * @return Il nome attuale
+	 */
 	public String getName() {
 		return name;
 	}
 	
+	/**
+	 * 
+	 * @param name Il nuovo nome
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 	
+	/**
+	 * 
+	 * @return Il nome completo attuale
+	 */
 	public String getFullName() {
 		return fullName;
 	}
 	
+	/**
+	 * 
+	 * @param fullName Il nuovo nome completo
+	 */
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
 	
+	/**
+	 * 
+	 * @return Il country code attuale
+	 */
 	public String getCountryCode() {
 		return countryCode;
 	}
 	
+	/**
+	 * 
+	 * @param countryCode Il nuovo country code
+	 */
 	public void setCountryCode(String countryCode) {
 		this.countryCode = countryCode;
 	}
 	
+	/**
+	 * 
+	 * @return Il paese attuale
+	 */
 	public String getCountry() {
 		return country;
 	}
 	
+	/**
+	 * 
+	 * @param country Il nuovo paese
+	 */
 	public void setCountry(String country) {
 		this.country = country;
 	}

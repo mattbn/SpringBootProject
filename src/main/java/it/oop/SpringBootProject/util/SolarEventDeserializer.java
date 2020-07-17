@@ -21,7 +21,9 @@ import it.oop.SpringBootProject.model.IntensityLevel;
 import it.oop.SpringBootProject.model.SolarEvent;
 
 /**
- * @author Mattia
+ * Deserializzatore personalizzato per la classe SolarEvent
+ * 
+ * @author <a href="https://github.com/mattbn">Mattia Bonanese</a>
  *
  */
 @SuppressWarnings("serial")

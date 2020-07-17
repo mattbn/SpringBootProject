@@ -10,7 +10,9 @@ import it.oop.SpringBootProject.model.IntensityStat;
 import it.oop.SpringBootProject.model.SolarEvent;
 
 /**
- * @author Mattia
+ * Calcola la statistica relativa alle intensita' di un evento
+ * 
+ * @author <a href="https://github.com/mattbn">Mattia Bonanese</a>
  *
  */
 public class IntensityStatCalc extends BaseStatCalc {
@@ -57,11 +59,20 @@ public class IntensityStatCalc extends BaseStatCalc {
 		this.data = new IntensityStat(date, values.size(), min, max, avg);
 	}
 	
-	
+	/**
+	 * Costruttore di base
+	 */
 	public IntensityStatCalc() {
 		super();
 	}
 	
+	/**
+	 * 
+	 * @param type Il tipo di evento
+	 * @param interval L'intervallo
+	 * @param data I dati
+	 * @param cls La classe dei dati
+	 */
 	public IntensityStatCalc(String type, String interval, Object data, Class<?> cls) {
 		super("intensity", type, interval, data, cls);
 		calc(data, cls);

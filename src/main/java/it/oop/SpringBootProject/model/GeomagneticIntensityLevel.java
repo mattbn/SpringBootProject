@@ -9,11 +9,16 @@ import java.util.regex.Pattern;
 import it.oop.SpringBootProject.util.InvalidIntensityFormatException;
 
 /**
- * @author Mattia
+ * Contiene informazioni sull'intensita' specifica di un GeomagConditionsEvent
+ * 
+ * @author <a href="https://github.com/mattbn">Mattia Bonanese</a>
  *
  */
 public class GeomagneticIntensityLevel extends IntensityLevel {
 
+	/**
+	 * @return La stringa contenente l'intensita' con l'unita' di misura
+	 */
 	@Override
 	public String getIntensityString() {
 		String res = "";
@@ -27,14 +32,27 @@ public class GeomagneticIntensityLevel extends IntensityLevel {
 	}
 	
 	
+	/**
+	 * Costruttore di base
+	 */
 	public GeomagneticIntensityLevel() {
 		super();
 	}
 	
+	/**
+	 * 
+	 * @param value Il valore dell'intensita'
+	 */
 	public GeomagneticIntensityLevel(Number value) {
 		super(value);
 	}
 	
+	/**
+	 * 
+	 * @param intensityString La stringa contenente l'intensita'
+	 * @param regexString L'espressione regolare per identificare l'intensita'
+	 * @throws InvalidIntensityFormatException L'intensita' non e' identificabile in intensityString
+	 */
 	public GeomagneticIntensityLevel(String intensityString, String regexString) throws InvalidIntensityFormatException {
 		Matcher m = Pattern.compile(regexString).matcher(intensityString);
 		

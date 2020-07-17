@@ -10,27 +10,45 @@ import java.util.regex.Pattern;
 import it.oop.SpringBootProject.util.InvalidIntensityFormatException;
 
 /**
- * @author Mattia
+ * Rappresenta una generica intensita'
+ * 
+ * @author <a href="https://github.com/mattbn">Mattia Bonanese</a>
  *
  */
 public class IntensityLevel {
 	
 	protected Number value;
 	
-	
+	/**
+	 * 
+	 * @return La stringa contenente l'intensita' con l'unita' di misura
+	 */
 	public String getIntensityString() {
 		return (value == null ? "" : value.toString());
 	}
 	
 	
+	/**
+	 * Costruttore di base
+	 */
 	public IntensityLevel() {
 		value = null;
 	}
 	
+	/**
+	 * 
+	 * @param value Il valore dell'intensita'
+	 */
 	public IntensityLevel(Number value) {
 		this.value = value;
 	}
 	
+	/**
+	 * 
+	 * @param intensityString La stringa contenente l'intensita'
+	 * @param regexString L'espressione regolare per identificare l'intensita'
+	 * @throws InvalidIntensityFormatException L'intensita' non e' identificabile in intensityString
+	 */
 	public IntensityLevel(String intensityString, String regexString) throws InvalidIntensityFormatException {
 		Matcher m = Pattern.compile(regexString).matcher(intensityString);
 		
@@ -47,11 +65,19 @@ public class IntensityLevel {
 			throw new InvalidIntensityFormatException(getClass().getName()+":Formato intensita' non riconosciuto");
 	}
 	
-
+	
+	/**
+	 * 
+	 * @return Il valore attuale
+	 */
 	public Number getValue() {
 		return value;
 	}
 
+	/**
+	 * 
+	 * @param value Il nuovo valore
+	 */
 	public void setValue(Number value) {
 		this.value = value;
 	}
@@ -61,6 +87,11 @@ public class IntensityLevel {
 		return getIntensityString();
 	}
 	
+	/**
+	 * 
+	 * @param il Oggetto IntensityLevel su cui effettuare il confronto
+	 * @return -1 se il.getValue() > this.getValue(), 0 se i valori sono uguali, 1 altrimenti
+	 */
 	public int compareTo(IntensityLevel il) {
 		if(il != null)
 			return new BigDecimal(value.toString()).compareTo(new BigDecimal(il.getValue().toString()));

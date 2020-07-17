@@ -15,7 +15,9 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
 /**
- * @author Mattia
+ * Deserializzatore personalizzato per il tipo Calendar
+ * 
+ * @author <a href="https://github.com/mattbn">Mattia Bonanese</a>
  *
  */
 @SuppressWarnings("serial")

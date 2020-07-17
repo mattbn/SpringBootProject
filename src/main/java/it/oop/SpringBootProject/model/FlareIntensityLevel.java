@@ -11,11 +11,14 @@ import java.util.regex.Pattern;
 import it.oop.SpringBootProject.util.InvalidIntensityFormatException;
 
 /**
- * @author Mattia
+ * Contiene informazioni sull'intensita' specifica di un FlareEvent
+ * 
+ * @author <a href="https://github.com/mattbn">Mattia Bonanese</a>
  *
  */
 public class FlareIntensityLevel extends IntensityLevel {
 	
+	// utile per capire quale unita' di misura usare
 	private static final Map<Character, BigDecimal> symbols = Map.of(
 			'A', BigDecimal.ONE.divide(BigDecimal.TEN.pow(8)), 
 			'B', BigDecimal.ONE.divide(BigDecimal.TEN.pow(7)), 
@@ -24,14 +27,27 @@ public class FlareIntensityLevel extends IntensityLevel {
 			'X', BigDecimal.ONE.divide(BigDecimal.TEN.pow(4)));
 	
 	
+	/**
+	 * Costruttore di base
+	 */
 	public FlareIntensityLevel() {
 		super();
 	}
 	
+	/**
+	 * 
+	 * @param value Valore dell'intensita'
+	 */
 	public FlareIntensityLevel(Number value) {
 		super(value);
 	}
 	
+	/**
+	 * 
+	 * @param intensityString Stringa contenente il valore dell'intensita'
+	 * @param regexString Espressione regolare per identificare l'intensita'
+	 * @throws InvalidIntensityFormatException L'intensita' non e' identificabile in intensityString
+	 */
 	public FlareIntensityLevel(String intensityString, String regexString) throws InvalidIntensityFormatException {
 		Matcher m = Pattern.compile(regexString).matcher(intensityString);
 		
@@ -40,11 +56,13 @@ public class FlareIntensityLevel extends IntensityLevel {
 			
 			value = BigDecimal.ZERO;
 			BigDecimal k = BigDecimal.ZERO;
+			// prende l'unita' di misura e fa le relative conversioni
 			for(Map.Entry<Character,BigDecimal> e : symbols.entrySet())
 				if(content.charAt(0) == e.getKey())
-					k = e.getValue();
+					k = e.getValue(); // == 10^(-x)
 			
 			String strVal = m.group();
+			// value = 10^(-x) * moltiplicatore
 			value = k.multiply(new BigDecimal(strVal.substring(1,strVal.length())));
 		}
 		
@@ -53,6 +71,9 @@ public class FlareIntensityLevel extends IntensityLevel {
 	}
 	
 	
+	/**
+	 * @return Stringa contenente l'intensita' con unita' di misura
+	 */
 	@Override
 	public String getIntensityString() {
 		String res = "";
@@ -62,6 +83,7 @@ public class FlareIntensityLevel extends IntensityLevel {
 		BigDecimal v = new BigDecimal(value.toString()), 
 					k = BigDecimal.ONE;
 		
+		// prende l'unita' di misura giusta
 		for(Map.Entry<Character,BigDecimal> e : symbols.entrySet())
 			if(v.compareTo(e.getValue()) > 0) {
 				res = e.getKey().toString();

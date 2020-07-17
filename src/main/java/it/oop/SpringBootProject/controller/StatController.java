@@ -20,12 +20,25 @@ import it.oop.SpringBootProject.util.CountStatCalc;
 import it.oop.SpringBootProject.util.IntensityStatCalc;
 
 /**
- * @author Mattia
+ * Gestisce le rotte relative alle statistiche<br />
+ * /stat/count/{event}
+ * /stat/intensity/{event}
+ * 
+ * @author <a href="https://github.com/mattbn">Mattia Bonanese</a>
  *
  */
 @RestController
 public class StatController {
 	
+	/**
+	 * Gestisce la rotta /stat/count/{event}
+	 * 
+	 * @param eventList Lista di eventi solari di cui calcolare la statistica
+	 * @param eventName Nome dell'evento solare da estrarre dalla lista
+	 * @param interval Intervallo temporale desiderato
+	 * @param req Oggetto contenente i dati della richiesta al fine di identificare il client
+	 * @return La lista di CountStatCalc contenenti i dati delle statistiche sui singoli eventi
+	 */
 	@PostMapping("/stat/count/{event}")
 	public List<CountStatCalc> getCountStats(@RequestBody List<SolarEvent> eventList, 
 			@PathVariable(name = "event") String eventName, 
@@ -51,6 +64,15 @@ public class StatController {
 		return null;
 	}
 	
+	/**
+	 * Gestisce la rotta /stat/intensity/{event}
+	 * 
+	 * @param eventList La lista di eventi di cui calcolare la statistica
+	 * @param eventName Il nome dell'evento da estrarre dalla lista
+	 * @param interval Intervallo di tempo desiderato
+	 * @param req Oggetto contenente i dati della richiesta al fine di identificare il client
+	 * @return La lista di IntensityStatCalc contenenti i dati delle statistiche sui singoli eventi
+	 */
 	@PostMapping("/stat/intensity/{event}")
 	public List<IntensityStatCalc> getIntensityStats(@RequestBody List<SolarEvent> eventList, 
 			@PathVariable(name = "event") String eventName, 

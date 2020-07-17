@@ -4,7 +4,9 @@
 package it.oop.SpringBootProject.model;
 
 /**
- * @author Mattia
+ * Identifica i tre tipi di eventi solari considerati
+ * 
+ * @author <a href="https://github.com/mattbn">Mattia Bonanese</a>
  *
  */
 public enum EventType {

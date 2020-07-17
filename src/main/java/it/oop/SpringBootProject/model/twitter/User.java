@@ -12,7 +12,9 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import it.oop.SpringBootProject.util.CalendarDeserializer;
 
 /**
- * @author Mattia
+ * Rappresenta un oggetto di tipo User di Twitter
+ * 
+ * @author <a href="https://github.com/mattbn">Mattia Bonanese</a>
  *
  */
 @JsonIgnoreProperties(value = {
@@ -60,6 +62,9 @@ public class User {
 	private Calendar creationDate;
 	
 	
+	/**
+	 * Costruttore di base
+	 */
 	public User() {
 		id = -1;
 		name = "";
@@ -78,114 +83,226 @@ public class User {
 	}
 	
 
+	/**
+	 * 
+	 * @return L'id attuale
+	 */
 	public long getId() {
 		return id;
 	}
 
+	/**
+	 * 
+	 * @param id Il nuovo id
+	 */
 	public void setId(long id) {
 		this.id = id;
 	}
 
+	/**
+	 * 
+	 * @return Il nome attuale
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * 
+	 * @param name Il nuovo nome
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * 
+	 * @return Il tag utente attuale
+	 */
 	public String getScreenName() {
 		return screenName;
 	}
 
+	/**
+	 * 
+	 * @param screenName Il nuovo tag utente
+	 */
 	public void setScreenName(String screenName) {
 		this.screenName = screenName;
 	}
 
+	/**
+	 * 
+	 * @return Il luogo attuale
+	 */
 	public String getLocation() {
 		return location;
 	}
 
+	/**
+	 * 
+	 * @param location Il nuovo luogo
+	 */
 	public void setLocation(String location) {
 		this.location = location;
 	}
 
+	/**
+	 * 
+	 * @return L'Url attuale
+	 */
 	public String getUrl() {
 		return url;
 	}
 
+	/**
+	 * 
+	 * @param url Il nuovo Url
+	 */
 	public void setUrl(String url) {
 		this.url = url;
 	}
 
+	/**
+	 * 
+	 * @return La descrizione attuale
+	 */
 	public String getDescription() {
 		return description;
 	}
 
+	/**
+	 * 
+	 * @param description La nuova descrizione
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
+	/**
+	 * 
+	 * @return L'attuale stato della flag protectedFlag
+	 */
 	public boolean isProtectedFlag() {
 		return protectedFlag;
 	}
-
+	
+	/**
+	 * 
+	 * @param protectedFlag Il nuovo stato della flag protectedFlag
+	 */
 	public void setProtectedFlag(boolean protectedFlag) {
 		this.protectedFlag = protectedFlag;
 	}
 
+	/**
+	 * 
+	 * @return L'attuale stato della flag verifiedFlag
+	 */
 	public boolean isVerifiedFlag() {
 		return verifiedFlag;
 	}
 
+	/**
+	 * 
+	 * @param verifiedFlag Il nuovo stato della flag verifiedFlag
+	 */
 	public void setVerifiedFlag(boolean verifiedFlag) {
 		this.verifiedFlag = verifiedFlag;
 	}
 
+	/**
+	 * 
+	 * @return Il numero di followers attuale
+	 */
 	public int getFollowersCount() {
 		return followersCount;
 	}
 
+	/**
+	 * 
+	 * @param followersCount Il nuovo numero di followers
+	 */
 	public void setFollowersCount(int followersCount) {
 		this.followersCount = followersCount;
 	}
 
+	/**
+	 * 
+	 * @return Il numero di seguiti attuale
+	 */
 	public int getFriendsCount() {
 		return friendsCount;
 	}
 
+	/**
+	 * 
+	 * @param friendsCount Il nuovo numero di seguiti
+	 */
 	public void setFriendsCount(int friendsCount) {
 		this.friendsCount = friendsCount;
 	}
 
+	/**
+	 * 
+	 * @return Il numero di liste pubbliche attuale
+	 */
 	public int getListedCount() {
 		return listedCount;
 	}
 
+	/**
+	 * 
+	 * @param listedCount Il nuovo numero di liste pubbliche
+	 */
 	public void setListedCount(int listedCount) {
 		this.listedCount = listedCount;
 	}
 
+	/**
+	 * 
+	 * @return Il numero di likes attuale
+	 */
 	public int getFavoritesCount() {
 		return favoritesCount;
 	}
 
+	/**
+	 * 
+	 * @param favoritesCount Il nuovo numero di likes
+	 */
 	public void setFavoritesCount(int favoritesCount) {
 		this.favoritesCount = favoritesCount;
 	}
 
+	/**
+	 * 
+	 * @return Il numero di status attuali
+	 */
 	public int getStatusesCount() {
 		return statusesCount;
 	}
 
+	/**
+	 * 
+	 * @param statusesCount Il nuovo numero di status
+	 */
 	public void setStatusesCount(int statusesCount) {
 		this.statusesCount = statusesCount;
 	}
 
+	/**
+	 * 
+	 * @return La data attuale
+	 */
 	public Calendar getCreationDate() {
 		return creationDate;
 	}
 
+	/**
+	 * 
+	 * @param creationDate La nuova data
+	 */
 	public void setCreationDate(Calendar creationDate) {
 		this.creationDate = creationDate;
 	}

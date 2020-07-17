@@ -27,7 +27,9 @@ import it.oop.SpringBootProject.model.SolarEvent;
 import it.oop.SpringBootProject.model.twitter.Tweet;
 
 /**
- * @author Mattia
+ * Gestisce le operazioni sui dati
+ * 
+ * @author <a href="https://github.com/mattbn">Mattia Bonanese</a>
  *
  */
 public class DataService {
@@ -54,6 +56,12 @@ public class DataService {
 			Map.entry("geomagnetic_storm", EVENT_INSTANCES[2]), 
 			Map.entry("gstorm", EVENT_INSTANCES[2]));
 	
+	/**
+	 * Converte un Tweet in un SolarEvent
+	 * 
+	 * @param tweet Il tweet da convertire
+	 * @return L'evento solare corrispondente (o null se non disponibile)
+	 */
 	public static SolarEvent convert(Tweet tweet) {
 		
 		if(tweet != null)
@@ -97,6 +105,12 @@ public class DataService {
 		return null;
 	}
 	
+	/**
+	 * Converte una lista di tweet in una lista di eventi solari
+	 * 
+	 * @param tweets La lista di tweet da convertire
+	 * @return La lista di eventi solari corrispondente
+	 */
 	public static List<SolarEvent> convert(List<Tweet> tweets) { // LinkedList impl
 		List<SolarEvent> ls = new ArrayList<SolarEvent>();
 		for(Tweet t : tweets) {
@@ -108,7 +122,12 @@ public class DataService {
 		return ls;
 	}
 	
-	
+	/**
+	 * Ottiene una stringa di dati da un indirizzo remoto
+	 * 
+	 * @param address L'indirizzo al quale collegarsi
+	 * @return La stringa di dati ottenuta dall'indirizzo
+	 */
 	public static String getRemoteData(String address) {
 		String res = "";
 		InputStream is = null;
@@ -140,6 +159,12 @@ public class DataService {
 		return res;
 	}
 	
+	/**
+	 * Ottiene una lista di tweet collegandosi a un indirizzo remoto
+	 * 
+	 * @param address L'indirizzo al quale collegarsi
+	 * @return La lista di tweet corrispondente
+	 */
 	public static List<Tweet> getTweets(String address) {
 		String jsonStr = getRemoteData(address);
 		return JsonParserService.read(jsonStr, new TypeReference<List<Tweet>>() {});

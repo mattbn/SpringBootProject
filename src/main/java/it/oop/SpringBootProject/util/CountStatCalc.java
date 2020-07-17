@@ -10,7 +10,9 @@ import it.oop.SpringBootProject.model.CountStat;
 import it.oop.SpringBootProject.model.SolarEvent;
 
 /**
- * @author Mattia
+ * Calcola la statistica sul numero di eventi
+ * 
+ * @author <a href="https://github.com/mattbn">Mattia Bonanese</a>
  *
  */
 public class CountStatCalc extends BaseStatCalc implements StatCalc {
@@ -38,10 +40,20 @@ public class CountStatCalc extends BaseStatCalc implements StatCalc {
 	}
 	
 	
+	/**
+	 * Costruttore di base
+	 */
 	public CountStatCalc() {
 		super();
 	}
 	
+	/**
+	 * 
+	 * @param type Il tipo di evento
+	 * @param interval L'intervallo 
+	 * @param data I dati
+	 * @param cls La classe dei dati
+	 */
 	public CountStatCalc(String type, String interval, Object data, Class<?> cls) {
 		super("count", type, interval, data, cls);
 		calc(data, cls);
