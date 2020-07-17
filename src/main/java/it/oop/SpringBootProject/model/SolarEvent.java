@@ -6,12 +6,16 @@ package it.oop.SpringBootProject.model;
 import java.util.Calendar;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import it.oop.SpringBootProject.util.SolarEventDeserializer;
 
 /**
  * @author Mattia
  *
  */
 @JsonIgnoreProperties(value = {"intensityRegex"})
+@JsonDeserialize(using = SolarEventDeserializer.class)
 public abstract class SolarEvent {
 	
 	protected IntensityLevel intensity;
