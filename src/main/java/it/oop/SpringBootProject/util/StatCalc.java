@@ -11,6 +11,6 @@ import it.oop.SpringBootProject.model.Stat;
  */
 public interface StatCalc {
 	
-	public Stat calc();
+	public Stat calc(Object data, Class<?> cls);
 
 }

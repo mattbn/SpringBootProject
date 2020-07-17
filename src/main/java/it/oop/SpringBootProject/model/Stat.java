@@ -3,47 +3,31 @@
  */
 package it.oop.SpringBootProject.model;
 
+import java.util.Calendar;
+
 /**
  * @author Mattia
  *
  */
 public class Stat {
 	
-	private String name;
-	private Object value;
+	protected Date date;
 	
 	
-	public Stat(Stat stat) {
-		if(stat != null) {
-			name = stat.getName();
-			value = stat.getValue();
-		}
-		
-		else {
-			name = null;
-			value = null;
-		}
+	public Stat() {
+		date = new Date(Calendar.getInstance());
 	}
 	
-	public Stat(String name, Object value) {
-		this.name = name;
-		this.value = value;
+	public Stat(Date date) {
+		this.date = date;
 	}
-
-	public String getName() {
-		return name;
+	
+	public Date getDate() {
+		return date;
 	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Object getValue() {
-		return value;
-	}
-
-	public void setValue(Object value) {
-		this.value = value;
+	
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 }
