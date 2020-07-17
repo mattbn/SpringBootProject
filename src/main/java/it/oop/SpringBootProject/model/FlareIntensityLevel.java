@@ -63,8 +63,8 @@ public class FlareIntensityLevel extends IntensityLevel {
 					k = BigDecimal.ONE;
 		
 		for(Map.Entry<Character,BigDecimal> e : symbols.entrySet())
-			if(res.equals("") && v.compareTo(e.getValue()) > 0) {
-				res += e.getKey();
+			if(v.compareTo(e.getValue()) > 0) {
+				res = e.getKey().toString();
 				k = BigDecimal.ONE.divide(e.getValue());
 			}
 		

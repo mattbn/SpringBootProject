@@ -51,8 +51,8 @@ public class DataController {
 		System.out.println("\tscreen_name = "+name);
 		System.out.println("\tcount = "+count.toString());
 		
-		return DataService.convert(
-				DataService.getTweets(fqdn+"?screen_name="+name+"&count="+count.toString()));
+		List<Tweet> tweets = DataService.getTweets(fqdn+"?screen_name="+name+"&count="+count.toString());
+		return DataService.convert(tweets);
 	}
 	
 	@RequestMapping("/metadata")
@@ -60,7 +60,10 @@ public class DataController {
 		
 		System.out.println("/metadata request from "+req.getRemoteAddr());
 		
-		return JsonParserService.getClassMetadata(Tweet.class);
+		String res = JsonParserService.getClassMetadata(Tweet.class) + 
+				JsonParserService.getClassMetadata(SolarEvent.class);
+		
+		return res;
 	}
 
 }

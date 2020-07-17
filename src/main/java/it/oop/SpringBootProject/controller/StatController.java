@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.oop.SpringBootProject.model.SolarEvent;
+import it.oop.SpringBootProject.service.JsonParserService;
 import it.oop.SpringBootProject.service.StatService;
 import it.oop.SpringBootProject.util.CountStatCalc;
 import it.oop.SpringBootProject.util.IntensityStatCalc;
