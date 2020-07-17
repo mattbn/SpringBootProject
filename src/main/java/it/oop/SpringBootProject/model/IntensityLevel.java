@@ -26,6 +26,11 @@ public class IntensityLevel {
 									onlySymbol = Pattern.compile("[a-zA-Z]+");
 	
 	
+	public IntensityLevel() {
+		value = Integer.valueOf(0);
+		symbol = "";
+	}
+	
 	public IntensityLevel(Number value, String symbol) {
 		this.value = value;
 		this.symbol = symbol;
