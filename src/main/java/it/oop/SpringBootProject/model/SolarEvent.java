@@ -5,14 +5,18 @@ package it.oop.SpringBootProject.model;
 
 import java.util.Calendar;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * @author Mattia
  *
  */
+@JsonIgnoreProperties(value = {"intensityRegex"})
 public abstract class SolarEvent {
 	
-	private IntensityLevel intensity;
-	private Calendar date; // data di osservazione
+	protected IntensityLevel intensity;
+	protected Calendar date; // data di osservazione
+	protected EventType type;
 	
 	
 	public abstract EventType getType();

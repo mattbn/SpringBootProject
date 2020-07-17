@@ -12,6 +12,9 @@ import it.oop.SpringBootProject.model.SolarEvent;
  *
  */
 public class GeomagStormEvent extends SolarEvent {
+	
+	private final String intensityRegex = "Kp[0-9]";
+	
 
 	@Override
 	public EventType getType() {
@@ -20,19 +23,22 @@ public class GeomagStormEvent extends SolarEvent {
 
 	@Override
 	public String getIntensityRegex() {
-		return "Kp[0-9]";
+		return intensityRegex;
 	}
 	
 	public GeomagStormEvent() {
 		super();
+		type = EventType.GeomagneticStorm;
 	}
 	
 	public GeomagStormEvent(GeomagStormEvent event) {
 		super(event);
+		type = EventType.GeomagneticStorm;
 	}
 	
 	public GeomagStormEvent(IntensityLevel intensity, Calendar date) {
 		super(intensity, date);
+		type = EventType.GeomagneticStorm;
 	}
 
 }
