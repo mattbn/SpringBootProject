@@ -3,7 +3,7 @@
  */
 package it.oop.SpringBootProject.model;
 
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  * @author Mattia
@@ -30,7 +30,7 @@ public class FlareEvent extends SolarEvent {
 		super(event);
 	}
 	
-	public FlareEvent(IntensityLevel intensity, Date date) {
+	public FlareEvent(IntensityLevel intensity, Calendar date) {
 		super(intensity, date);
 	}
 

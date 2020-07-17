@@ -66,5 +66,9 @@ public abstract class SolarEvent {
 	public String toString() {
 		return getType().toString()+" ("+intensity.toString()+") [observed at: "+date.toString()+"]";
 	}
+	
+	public boolean equals(SolarEvent ev) {
+		return (intensity.equals(ev.getIntensity()) && date.equals(ev.getDate()));
+	}
 
 }
