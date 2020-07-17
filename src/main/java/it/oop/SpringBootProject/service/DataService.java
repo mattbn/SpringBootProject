@@ -40,8 +40,10 @@ public class DataService {
 			"Flare", new FlareEvent(), 
 			"geomagnetic conditions", new GeomagConditionsEvent(), 
 			"Geomagnetic conditions", new GeomagConditionsEvent(), 
+			"GeomagneticConditions", new GeomagConditionsEvent(), 
 			"geomagnetic storm", new GeomagStormEvent(), 
-			"Geomagnetic storm", new GeomagStormEvent());
+			"Geomagnetic storm", new GeomagStormEvent(), 
+			"GeomagneticStorm", new GeomagStormEvent());
 	
 	@SuppressWarnings("deprecation")
 	public static SolarEvent convert(Tweet tweet) {
